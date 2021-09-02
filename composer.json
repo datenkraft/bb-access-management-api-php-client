@@ -1,0 +1,35 @@
+{
+  "name": "datenkraft/bb-access-management-api-php-client",
+  "description": "The Access Management API PHP Client enables you to work with the Access Management API",
+  "type": "library",
+  "require": {
+    "php": "^7.2 | ^8.0",
+    "datenkraft/bb-base-api-php-client": "^1.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Datenkraft GmbH",
+      "email": "office@datenkraft.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Datenkraft\\Backbone\\Client\\DebtCapturingApi\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "pact-foundation/pact-php": "dev-master",
+    "squizlabs/php_codesniffer": "^3.6",
+    "jane-php/open-api-3": "^6.3.0",
+    "friendsofphp/php-cs-fixer": "^2.18",
+    "ext-json": "*"
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  }
+}
