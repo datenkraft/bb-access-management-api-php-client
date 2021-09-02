@@ -35,14 +35,12 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
 
         $this->requestData = [];
         $this->responseData = [
-            [
-                'roleCode' => 'test_role_1',
-                'name' => 'Test Role 1',
-            ],
-            [
-                'roleCode' => 'test_role_2',
-                'name' => 'Test Role 2',
-            ],
+            $this->matcher->eachLike(
+                [
+                    'roleCode' => 'test_role_1',
+                    'identityId' => $this->matcher->uuid(),
+                ]
+            )
         ];
 
         $this->path = '/role-identity';
@@ -52,9 +50,7 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
     {
         $this->expectedStatusCode = '200';
 
-        $this->builder
-            ->given('The request is valid, the token is valid and has a valid scope')
-            ->uponReceiving('Successful GET request to /role-identity');
+        $this->builder->given('The request is valid, the token is valid and has a valid scope')->uponReceiving('Successful GET request to /role-identity');
 
         $this->beginTest();
     }
@@ -67,9 +63,7 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->expectedStatusCode = '401';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder
-            ->given('The token is invalid')
-            ->uponReceiving('Unauthorized GET request to /role-identity');
+        $this->builder->given('The token is invalid')->uponReceiving('Unauthorized GET request to /role-identity');
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
@@ -83,9 +77,7 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->expectedStatusCode = '403';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder
-            ->given('The token is valid with an invalid scope')
-            ->uponReceiving('Forbidden GET request to /role-identity');
+        $this->builder->given('The token is valid with an invalid scope')->uponReceiving('Forbidden GET request to /role-identity');
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
