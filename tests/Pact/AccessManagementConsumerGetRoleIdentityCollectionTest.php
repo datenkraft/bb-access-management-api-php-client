@@ -46,7 +46,7 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->path = '/role-identity';
     }
 
-    public function testGetRoleCollectionSuccess(): void
+    public function testGetRoleIdentityCollectionSuccess(): void
     {
         $this->expectedStatusCode = '200';
 
@@ -55,7 +55,7 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->beginTest();
     }
 
-    public function testGetRoleCollectionUnauthorized(): void
+    public function testGetRoleIdentityCollectionUnauthorized(): void
     {
         $this->token = 'invalid_token';
         $this->requestHeaders['Authorization'] = 'Bearer ' . $this->token;
@@ -69,7 +69,7 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->beginTest();
     }
 
-    public function testGetRoleCollectionForbidden(): void
+    public function testGetRoleIdentityCollectionForbidden(): void
     {
         $this->token = getenv('VALID_TOKEN_SKU_USAGE_POST');
         $this->requestHeaders['Authorization'] = 'Bearer ' . $this->token;
