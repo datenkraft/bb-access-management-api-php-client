@@ -50,7 +50,8 @@ class AccessManagementConsumerGetRoleCollectionTest extends AccessManagementCons
     {
         $this->expectedStatusCode = '200';
 
-        $this->builder->given('The request is valid, the token is valid and has a valid scope')->uponReceiving('Successful GET request to /role');
+        $this->builder->given('The request is valid, the token is valid and has a valid scope')
+            ->uponReceiving('Successful GET request to /role');
 
         $this->beginTest();
     }
@@ -77,7 +78,8 @@ class AccessManagementConsumerGetRoleCollectionTest extends AccessManagementCons
         $this->expectedStatusCode = '403';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder->given('The token is valid with an invalid scope')->uponReceiving('Forbidden GET request to /role');
+        $this->builder->given('The token is valid with an invalid scope')
+            ->uponReceiving('Forbidden GET request to /role');
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
