@@ -1,8 +1,8 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Normalizer;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer;
 
-use Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,7 +14,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = array('Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\ErrorResponse' => 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Normalizer\\ErrorResponseNormalizer', 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\Error' => 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Normalizer\\ErrorNormalizer', 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\RoleResource' => 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Normalizer\\RoleResourceNormalizer', 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\RoleIdentityResource' => 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Normalizer\\RoleIdentityResourceNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse' => 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Normalizer\\ErrorResponseNormalizer', 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\Error' => 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Normalizer\\ErrorNormalizer', 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\RoleResource' => 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Normalizer\\RoleResourceNormalizer', 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\RoleIdentityResource' => 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Normalizer\\RoleIdentityResourceNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

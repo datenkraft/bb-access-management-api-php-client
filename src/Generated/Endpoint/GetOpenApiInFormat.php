@@ -1,8 +1,8 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Endpoint;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint;
 
-class GetOpenApiInFormat extends \Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Runtime\Client\Endpoint
+class GetOpenApiInFormat extends \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\Endpoint
 {
     protected $format;
     /**
@@ -14,7 +14,7 @@ class GetOpenApiInFormat extends \Datenkraft\Backbone\Client\DebtCapturingApi\Ge
     {
         $this->format = $format;
     }
-    use \Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Runtime\Client\EndpointTrait;
+    use \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -30,7 +30,7 @@ class GetOpenApiInFormat extends \Datenkraft\Backbone\Client\DebtCapturingApi\Ge
     /**
      * {@inheritdoc}
      *
-     * @throws \Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Exception\UnexpectedStatusCodeException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException
      *
      * @return null
      */
@@ -39,7 +39,7 @@ class GetOpenApiInFormat extends \Datenkraft\Backbone\Client\DebtCapturingApi\Ge
         if (200 === $status) {
             return null;
         }
-        throw new \Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Exception\UnexpectedStatusCodeException($status, $body);
+        throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException($status, $body);
     }
     public function getAuthenticationScopes() : array
     {

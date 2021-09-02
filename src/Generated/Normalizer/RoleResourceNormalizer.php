@@ -1,9 +1,9 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Normalizer;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class RoleResourceNormalizer implements DenormalizerInterface, NormalizerInterfa
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\RoleResource';
+        return $type === 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\RoleResource';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\RoleResource';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\RoleResource';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class RoleResourceNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Model\RoleResource();
+        $object = new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\RoleResource();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

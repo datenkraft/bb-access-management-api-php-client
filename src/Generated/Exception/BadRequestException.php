@@ -1,6 +1,6 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Exception;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception;
 
 class BadRequestException extends \RuntimeException implements ClientException
 {

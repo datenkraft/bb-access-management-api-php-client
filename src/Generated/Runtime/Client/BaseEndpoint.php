@@ -1,6 +1,6 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Runtime\Client;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;

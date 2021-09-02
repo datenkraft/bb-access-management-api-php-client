@@ -1,6 +1,6 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Model;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model;
 
 class RoleIdentityResource
 {

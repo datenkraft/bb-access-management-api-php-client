@@ -1,9 +1,9 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Normalizer;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\ErrorResponse';
+        return $type === 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\ErrorResponse';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,14 +32,14 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Model\ErrorResponse();
+        $object = new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('errors', $data)) {
             $values = array();
             foreach ($data['errors'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\DebtCapturingApi\\Generated\\Model\\Error', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\Error', 'json', $context);
             }
             $object->setErrors($values);
         }

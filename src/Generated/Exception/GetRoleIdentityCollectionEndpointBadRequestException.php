@@ -1,11 +1,11 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Exception;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception;
 
 class GetRoleIdentityCollectionEndpointBadRequestException extends BadRequestException
 {
     private $errorResponse;
-    public function __construct(\Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Model\ErrorResponse $errorResponse)
+    public function __construct(\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse $errorResponse)
     {
         parent::__construct('Bad Request', 400);
         $this->errorResponse = $errorResponse;

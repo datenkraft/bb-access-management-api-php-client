@@ -1,6 +1,6 @@
 <?php
 
-namespace Datenkraft\Backbone\Client\DebtCapturingApi\Generated\Runtime\Normalizer;
+namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Normalizer;
 
 trait CheckArray
 {
