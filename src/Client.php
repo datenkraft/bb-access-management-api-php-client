@@ -9,7 +9,7 @@ use Datenkraft\Backbone\Client\BaseApi\Exceptions\AuthException;
 
 /**
  * Class Client
- * @package Datenkraft\Backbone\Client\DebtCapturingApi
+ * @package Datenkraft\Backbone\Client\AccessManagementApi
  */
 class Client extends Generated\Client
 {
