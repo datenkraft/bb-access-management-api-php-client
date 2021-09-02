@@ -16,7 +16,7 @@
   "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
-      "Datenkraft\\Backbone\\Client\\DebtCapturingApi\\": "src/"
+      "Datenkraft\\Backbone\\Client\\AccessManagementApi\\": "src/"
     }
   },
   "require-dev": {
