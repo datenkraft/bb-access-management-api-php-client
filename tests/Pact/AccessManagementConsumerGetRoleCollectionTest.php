@@ -10,7 +10,7 @@ use Exception;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class SKUUsageConsumerGetTaskTest
+ * Class AccessManagementConsumerGetRoleCollectionTest
  * @package Pact
  */
 class AccessManagementConsumerGetRoleCollectionTest extends AccessManagementConsumerTest

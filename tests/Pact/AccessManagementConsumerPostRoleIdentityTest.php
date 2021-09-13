@@ -10,11 +10,14 @@ use Exception;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class AccessManagementConsumerGetRoleIdentityCollectionTest
+ * Class AccessManagementConsumerPostRoleIdentityTest
  * @package Pact
  */
-class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManagementConsumerTest
+class AccessManagementConsumerPostRoleIdentityTest extends AccessManagementConsumerTest
 {
+    /** @var string $identityId */
+    protected $identityId;
+
     /**
      * @throws Exception
      */
@@ -22,9 +25,9 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
     {
         parent::setUp();
 
-        $this->method = 'GET';
+        $this->method = 'POST';
 
-        $this->token = getenv('VALID_TOKEN_ROLE_IDENTITY_GET');
+        $this->token = getenv('VALID_TOKEN_ROLE_IDENTITY_POST');
 
         $this->requestHeaders = [
             'Authorization' => 'Bearer ' . $this->token,
@@ -33,27 +36,36 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
             'Content-Type' => 'application/json',
         ];
 
-        $this->requestData = [];
-        $this->responseData = $this->matcher->eachLike(
+        $this->identityId = $this->matcher->uuid();
+
+        $this->requestData = [
             [
                 'roleCode' => 'test_role_1',
-                'identityId' => $this->matcher->uuid(),
+                'identityId' => $this->identityId,
             ]
-        );
+        ];
+        $this->responseData = [
+            [
+                'roleCode' => 'test_role_1',
+                'identityId' => $this->identityId,
+            ]
+        ];
 
         $this->path = '/role-identity';
     }
 
-    public function testGetRoleIdentityCollectionSuccess(): void
+    public function testPostRoleIdentitySuccess(): void
     {
         $this->expectedStatusCode = '200';
 
-        $this->builder->given('The request is valid, the token is valid and has a valid scope')->uponReceiving('Successful GET request to /role-identity');
+        $this->builder->given('The request is valid, the token is valid and has a valid scope')->uponReceiving(
+            'Successful POST request to /role-identity'
+        );
 
         $this->beginTest();
     }
 
-    public function testGetRoleIdentityCollectionUnauthorized(): void
+    public function testPostRoleIdentityUnauthorized(): void
     {
         $this->token = 'invalid_token';
         $this->requestHeaders['Authorization'] = 'Bearer ' . $this->token;
@@ -61,13 +73,13 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->expectedStatusCode = '401';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder->given('The token is invalid')->uponReceiving('Unauthorized GET request to /role-identity');
+        $this->builder->given('The token is invalid')->uponReceiving('Unauthorized POST request to /role-identity');
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
     }
 
-    public function testGetRoleIdentityCollectionForbidden(): void
+    public function testPostRoleIdentityForbidden(): void
     {
         $this->token = getenv('VALID_TOKEN_SKU_USAGE_POST');
         $this->requestHeaders['Authorization'] = 'Bearer ' . $this->token;
@@ -75,7 +87,9 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->expectedStatusCode = '403';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder->given('The token is valid with an invalid scope')->uponReceiving('Forbidden GET request to /role-identity');
+        $this->builder->given('The token is valid with an invalid scope')->uponReceiving(
+            'Forbidden POST request to /role-identity'
+        );
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
