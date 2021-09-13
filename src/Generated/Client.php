@@ -6,6 +6,51 @@ class Client extends \Datenkraft\Backbone\Client\AccessManagementApi\Generated\R
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthRoleCollectionEndpointBadRequestException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthRoleCollectionEndpointUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthRoleCollectionEndpointForbiddenException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthRoleCollectionEndpointInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return null|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthRoleResource[]|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function getAuthRoleCollectionEndpoint(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint\GetAuthRoleCollectionEndpoint(), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthRoleIdentityCollectionEndpointBadRequestException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthRoleIdentityCollectionEndpointUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthRoleIdentityCollectionEndpointForbiddenException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthRoleIdentityCollectionEndpointInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return null|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthRoleIdentityResource[]|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function getAuthRoleIdentityCollectionEndpoint(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint\GetAuthRoleIdentityCollectionEndpoint(), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthRoleIdentityCollectionEndpointBadRequestException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthRoleIdentityCollectionEndpointUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthRoleIdentityCollectionEndpointForbiddenException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthRoleIdentityCollectionEndpointNotFoundException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthRoleIdentityCollectionEndpointConflictException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthRoleIdentityCollectionEndpointUnprocessableEntityException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthRoleIdentityCollectionEndpointInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return null|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthRoleIdentityResource[]|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function postAuthRoleIdentityCollectionEndpoint(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint\PostAuthRoleIdentityCollectionEndpoint(), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
