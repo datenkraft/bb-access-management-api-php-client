@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception;
 
-class PostAuthRoleIdentityCollectionEndpointBadRequestException extends BadRequestException
+class GetAuthRoleIdentityCollectionBadRequestException extends BadRequestException
 {
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse $errorResponse)
