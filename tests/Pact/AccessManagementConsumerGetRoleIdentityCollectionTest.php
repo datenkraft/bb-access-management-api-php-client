@@ -93,6 +93,6 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $factory->setToken($this->token);
         $client = Client::createWithFactory($factory, $this->config->getBaseUri());
 
-        return $client->getRoleIdentityCollectionEndpoint(Client::FETCH_RESPONSE);
+        return $client->getRoleIdentityCollection(Client::FETCH_RESPONSE);
     }
 }

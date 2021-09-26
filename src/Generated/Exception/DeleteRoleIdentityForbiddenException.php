@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception;
 
-class GetRoleIdentityCollectionEndpointForbiddenException extends ForbiddenException
+class DeleteRoleIdentityForbiddenException extends ForbiddenException
 {
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse $errorResponse)

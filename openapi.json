@@ -549,6 +549,16 @@
                 "summary": "Create one or more role to identity assignments in this resource server",
                 "description": "Create one or more role to identity assignments in this resource server",
                 "operationId": "postRoleIdentity",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/roleIdentityResource"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Created",
