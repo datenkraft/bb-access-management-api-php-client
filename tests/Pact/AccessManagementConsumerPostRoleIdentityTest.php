@@ -67,7 +67,8 @@ class AccessManagementConsumerPostRoleIdentityTest extends AccessManagementConsu
         $this->expectedStatusCode = '401';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder->given('The token is invalid')->uponReceiving('Unauthorized POST request to /role-identity');
+        $this->builder->given('The token is invalid')
+            ->uponReceiving('Unauthorized POST request to /role-identity');
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
@@ -81,9 +82,8 @@ class AccessManagementConsumerPostRoleIdentityTest extends AccessManagementConsu
         $this->expectedStatusCode = '403';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder->given('The token is valid with an invalid scope')->uponReceiving(
-            'Forbidden POST request to /role-identity'
-        );
+        $this->builder->given('The token is valid with an invalid scope')
+            ->uponReceiving('Forbidden POST request to /role-identity');
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
