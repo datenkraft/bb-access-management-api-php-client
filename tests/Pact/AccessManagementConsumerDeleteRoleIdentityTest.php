@@ -52,11 +52,10 @@ class AccessManagementConsumerDeleteRoleIdentityTest extends AccessManagementCon
     {
         $this->expectedStatusCode = '204';
 
-        $this->builder
-            ->given(
-                'A Role Identity relation with roleCode and identityId exists, ' .
-                'the request is valid, the token is valid and has a valid scope'
-            )
+        $this->builder->given(
+            'A Role Identity relation with roleCode and identityId exists, ' .
+            'the request is valid, the token is valid and has a valid scope'
+        )
             ->uponReceiving('Successful DELETE request to /role-identity');
 
         $this->beginTest();
@@ -70,8 +69,7 @@ class AccessManagementConsumerDeleteRoleIdentityTest extends AccessManagementCon
         $this->expectedStatusCode = '400';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder
-            ->given('The identityId in the request is invalid')
+        $this->builder->given('The identityId in the request is invalid')
             ->uponReceiving('Bad DELETE request to /role-identity');
 
         $this->responseData = $this->errorResponse;
@@ -88,8 +86,7 @@ class AccessManagementConsumerDeleteRoleIdentityTest extends AccessManagementCon
         $this->expectedStatusCode = '401';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder
-            ->given('The token is invalid')
+        $this->builder->given('The token is invalid')
             ->uponReceiving('Unauthorized DELETE request to /role-identity');
 
         $this->responseData = $this->errorResponse;
@@ -105,8 +102,7 @@ class AccessManagementConsumerDeleteRoleIdentityTest extends AccessManagementCon
         $this->expectedStatusCode = '403';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder
-            ->given('The token has an invalid scope')
+        $this->builder->given('The token has an invalid scope')
             ->uponReceiving('Forbidden DELETE request to /role-identity');
 
         $this->responseData = $this->errorResponse;
@@ -121,8 +117,7 @@ class AccessManagementConsumerDeleteRoleIdentityTest extends AccessManagementCon
         $this->expectedStatusCode = '422';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder
-            ->given('A Role Identity relation with roleCode and identityId does not exist')
+        $this->builder->given('A Role Identity relation with roleCode and identityId does not exist')
             ->uponReceiving('Unprocessable DELETE request to /role-identity');
 
         $this->responseData = $this->errorResponse;

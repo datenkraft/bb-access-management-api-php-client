@@ -52,9 +52,8 @@ class AccessManagementConsumerPostRoleIdentityTest extends AccessManagementConsu
     {
         $this->expectedStatusCode = '200';
 
-        $this->builder->given('The request is valid, the token is valid and has a valid scope')->uponReceiving(
-            'Successful POST request to /role-identity'
-        );
+        $this->builder->given('The request is valid, the token is valid and has a valid scope')
+            ->uponReceiving('Successful POST request to /role-identity');
 
         $this->beginTest();
     }
