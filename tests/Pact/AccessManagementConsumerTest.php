@@ -16,25 +16,28 @@ use PhpPact\Consumer\Model\ProviderResponse;
  */
 abstract class AccessManagementConsumerTest extends TestCase
 {
-    protected $builder;
-    protected $config;
+    protected InteractionBuilder $builder;
+    protected MockServerEnvConfig $config;
 
-    protected $token;
+    protected string $token;
 
-    protected $method;
-    protected $path;
+    protected string $method;
+    protected string $path;
 
-    protected $requestHeaders;
-    protected $responseHeaders;
-    protected $expectedStatusCode;
+    protected array $requestHeaders;
+    protected array $responseHeaders;
+    protected string $expectedStatusCode;
 
-    protected $requestData;
-    protected $responseData;
-    protected $errorResponse;
+    protected array $requestData;
+    protected array $responseData;
+    protected array $errorResponse;
 
-    protected $matcher;
+    protected Matcher $matcher;
 
-    protected $queryParams;
+    protected array $queryParams = [];
+
+    protected string $roleCode;
+    protected string $identityId;
 
     /**
      * @throws Exception
@@ -62,6 +65,8 @@ abstract class AccessManagementConsumerTest extends TestCase
                 ],
             ],
         ];
+
+        $this->roleCode = 'bb-access-management/contract_test_role_code_1';
     }
 
     protected function tearDown(): void
@@ -78,7 +83,7 @@ abstract class AccessManagementConsumerTest extends TestCase
         $response = $this->doClientRequest();
 
         $this->assertEquals($this->expectedStatusCode, $response->getStatusCode());
-        if ($this->responseHeaders['Content-Type'] == 'application/json') {
+        if ($this->expectedStatusCode != 204) {
             $this->assertJson($response->getBody());
         }
     }

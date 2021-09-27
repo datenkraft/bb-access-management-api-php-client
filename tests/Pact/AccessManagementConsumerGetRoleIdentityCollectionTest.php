@@ -10,7 +10,7 @@ use Exception;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class SKUUsageConsumerGetTaskTest
+ * Class AccessManagementConsumerGetRoleIdentityCollectionTest
  * @package Pact
  */
 class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManagementConsumerTest
@@ -48,7 +48,8 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
     {
         $this->expectedStatusCode = '200';
 
-        $this->builder->given('The request is valid, the token is valid and has a valid scope')->uponReceiving('Successful GET request to /role-identity');
+        $this->builder->given('The request is valid, the token is valid and has a valid scope')
+            ->uponReceiving('Successful GET request to /role-identity');
 
         $this->beginTest();
     }
@@ -61,7 +62,8 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->expectedStatusCode = '401';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder->given('The token is invalid')->uponReceiving('Unauthorized GET request to /role-identity');
+        $this->builder->given('The token is invalid')
+            ->uponReceiving('Unauthorized GET request to /role-identity');
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
@@ -75,7 +77,8 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $this->expectedStatusCode = '403';
         $this->errorResponse['errors'][0]['code'] = strval($this->expectedStatusCode);
 
-        $this->builder->given('The token is valid with an invalid scope')->uponReceiving('Forbidden GET request to /role-identity');
+        $this->builder->given('The token is valid with an invalid scope')
+            ->uponReceiving('Forbidden GET request to /role-identity');
 
         $this->responseData = $this->errorResponse;
         $this->beginTest();
@@ -93,6 +96,6 @@ class AccessManagementConsumerGetRoleIdentityCollectionTest extends AccessManage
         $factory->setToken($this->token);
         $client = Client::createWithFactory($factory, $this->config->getBaseUri());
 
-        return $client->getRoleIdentityCollectionEndpoint(Client::FETCH_RESPONSE);
+        return $client->getRoleIdentityCollection(Client::FETCH_RESPONSE);
     }
 }
