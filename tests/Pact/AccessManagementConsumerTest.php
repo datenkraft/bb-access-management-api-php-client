@@ -45,6 +45,9 @@ abstract class AccessManagementConsumerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->token = getenv('CONTRACT_TEST_CLIENT_TOKEN');
+        
         $this->matcher = new Matcher();
         $this->config = new MockServerEnvConfig();
         try {
