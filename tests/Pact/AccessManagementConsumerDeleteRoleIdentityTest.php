@@ -27,8 +27,6 @@ class AccessManagementConsumerDeleteRoleIdentityTest extends AccessManagementCon
 
         $this->method = 'DELETE';
 
-        $this->token = getenv('VALID_TOKEN_ROLE_IDENTITY_DELETE');
-
         $this->requestHeaders = [
             'Authorization' => 'Bearer ' . $this->token,
         ];
@@ -95,8 +93,7 @@ class AccessManagementConsumerDeleteRoleIdentityTest extends AccessManagementCon
 
     public function testDeleteRoleIdentityForbidden(): void
     {
-        // Token with invalid scope
-        $this->token = getenv('VALID_TOKEN_SKU_USAGE_POST');
+        $this->token = getenv('CONTRACT_TEST_CLIENT_WITHOUT_PERMISSIONS_TOKEN');
         $this->requestHeaders['Authorization'] = 'Bearer ' . $this->token;
 
         $this->expectedStatusCode = '403';

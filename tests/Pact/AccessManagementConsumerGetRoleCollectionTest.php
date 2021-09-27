@@ -24,8 +24,6 @@ class AccessManagementConsumerGetRoleCollectionTest extends AccessManagementCons
 
         $this->method = 'GET';
 
-        $this->token = getenv('VALID_TOKEN_ROLE_GET');
-
         $this->requestHeaders = [
             'Authorization' => 'Bearer ' . $this->token,
         ];
@@ -71,7 +69,7 @@ class AccessManagementConsumerGetRoleCollectionTest extends AccessManagementCons
 
     public function testGetRoleCollectionForbidden(): void
     {
-        $this->token = getenv('VALID_TOKEN_SKU_USAGE_POST');
+        $this->token = getenv('CONTRACT_TEST_CLIENT_WITHOUT_PERMISSIONS_TOKEN');
         $this->requestHeaders['Authorization'] = 'Bearer ' . $this->token;
 
         $this->expectedStatusCode = '403';

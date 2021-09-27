@@ -27,8 +27,6 @@ class AccessManagementConsumerPostRoleIdentityTest extends AccessManagementConsu
 
         $this->method = 'POST';
 
-        $this->token = getenv('VALID_TOKEN_ROLE_IDENTITY_POST');
-
         $this->requestHeaders = [
             'Authorization' => 'Bearer ' . $this->token,
         ];
@@ -75,7 +73,7 @@ class AccessManagementConsumerPostRoleIdentityTest extends AccessManagementConsu
 
     public function testPostRoleIdentityForbidden(): void
     {
-        $this->token = getenv('VALID_TOKEN_SKU_USAGE_POST');
+        $this->token = getenv('CONTRACT_TEST_CLIENT_WITHOUT_PERMISSIONS_TOKEN');
         $this->requestHeaders['Authorization'] = 'Bearer ' . $this->token;
 
         $this->expectedStatusCode = '403';

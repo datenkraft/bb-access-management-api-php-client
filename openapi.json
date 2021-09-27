@@ -890,12 +890,9 @@
                 "description": "OAuth2 Authorization",
                 "flows": {
                     "clientCredentials": {
-                        "tokenUrl": "https://localhost:30250/oauth/token",
+                        "tokenUrl": "https://localhost:30370/oauth/token",
                         "refreshUrl": "UNDEFINED",
-                        "scopes": {
-                            "bb-access-management-api/role:get": "Get Roles from every resource server in the Access Management API",
-                            "bb-access-management-api/role-identity:get": "Get Role to Identity assignments from every resource server in the Access Management API"
-                        }
+                        "scopes": {}
                     }
                 }
             }
