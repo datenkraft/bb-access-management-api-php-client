@@ -56,6 +56,6 @@ class GetRoleIdentityCollection extends \Datenkraft\Backbone\Client\AccessManage
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

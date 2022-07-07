@@ -72,6 +72,6 @@ class DeleteRoleIdentity extends \Datenkraft\Backbone\Client\AccessManagementApi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

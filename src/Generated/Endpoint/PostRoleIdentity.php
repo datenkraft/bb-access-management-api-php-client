@@ -80,6 +80,6 @@ class PostRoleIdentity extends \Datenkraft\Backbone\Client\AccessManagementApi\G
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }
