@@ -6,7 +6,7 @@ class GetChangelogInFormat extends \Datenkraft\Backbone\Client\AccessManagementA
 {
     protected $format;
     /**
-     * Get the changelog in the specified format (Markdown or HTML)
+     * Get the changelog in the specified format
      *
      * @param string $format Changelog file format
      */
