@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class RoleIdentityResourceNormalizer implements DenormalizerInterface, Normalize
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\RoleIdentityResource';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\RoleIdentityResource';
     }
@@ -41,9 +43,16 @@ class RoleIdentityResourceNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('roleCode', $data)) {
             $object->setRoleCode($data['roleCode']);
+            unset($data['roleCode']);
         }
         if (\array_key_exists('identityId', $data)) {
             $object->setIdentityId($data['identityId']);
+            unset($data['identityId']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -55,6 +64,11 @@ class RoleIdentityResourceNormalizer implements DenormalizerInterface, Normalize
         $data = array();
         $data['roleCode'] = $object->getRoleCode();
         $data['identityId'] = $object->getIdentityId();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }
