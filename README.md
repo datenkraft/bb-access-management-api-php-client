@@ -63,6 +63,10 @@ $factory = new ClientFactory($config);
 $client = Client::createWithFactory($factory);
 ~~~~
 
+### Example Endpoint: Get Role Collection
+~~~~ php
+$response = $client->getRoleCollection();
+$response; // tasks[]
 
 ## Licence
 This repository is available under the [MIT license](https://opensource.org/licenses/MIT).
