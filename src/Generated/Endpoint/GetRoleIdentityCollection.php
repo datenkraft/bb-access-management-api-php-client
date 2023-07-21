@@ -4,6 +4,17 @@ namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint;
 
 class GetRoleIdentityCollection extends \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\Endpoint
 {
+    /**
+     * Get all role to identity assignments from every microservice
+     *
+     * @param array $queryParameters {
+     *     @var string $filter[identityId] Filter the response for an identityId (uuid).
+     * }
+     */
+    public function __construct(array $queryParameters = array())
+    {
+        $this->queryParameters = $queryParameters;
+    }
     use \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
@@ -20,6 +31,15 @@ class GetRoleIdentityCollection extends \Datenkraft\Backbone\Client\AccessManage
     public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
+    }
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(array('filter[identityId]'));
+        $optionsResolver->setRequired(array());
+        $optionsResolver->setDefaults(array());
+        $optionsResolver->setAllowedTypes('filter[identityId]', array('string'));
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}
