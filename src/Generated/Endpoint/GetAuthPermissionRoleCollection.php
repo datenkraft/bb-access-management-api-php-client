@@ -4,6 +4,21 @@ namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint;
 
 class GetAuthPermissionRoleCollection extends \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\Endpoint
 {
+    /**
+    * Get all role to permission assignments from this resource server
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    * }
+    */
+    public function __construct(array $queryParameters = array())
+    {
+        $this->queryParameters = $queryParameters;
+    }
     use \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
@@ -21,6 +36,17 @@ class GetAuthPermissionRoleCollection extends \Datenkraft\Backbone\Client\Access
     {
         return array('Accept' => array('application/json'));
     }
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode'));
+        $optionsResolver->setRequired(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
+        $optionsResolver->setAllowedTypes('page', array('int'));
+        $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('paginationMode', array('string'));
+        return $optionsResolver;
+    }
     /**
      * {@inheritdoc}
      *
@@ -29,12 +55,12 @@ class GetAuthPermissionRoleCollection extends \Datenkraft\Backbone\Client\Access
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthPermissionRoleCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthPermissionRoleResource[]|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse
+     * @return \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthPermissionRolePaginatedCollection|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\AuthPermissionRoleResource[]', 'json');
+            return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\AuthPermissionRolePaginatedCollection', 'json');
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetAuthPermissionRoleCollectionUnauthorizedException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'));
