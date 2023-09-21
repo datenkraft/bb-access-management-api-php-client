@@ -5,12 +5,17 @@ namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint;
 class GetRoleIdentityCollection extends \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Get all role to identity assignments from every microservice
-     *
-     * @param array $queryParameters {
-     *     @var string $filter[identityId] Filter the response for an identityId (uuid).
-     * }
-     */
+    * Get all role to identity assignments from every microservice
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[identityId] Filter the response for an identityId (uuid).
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
@@ -35,9 +40,12 @@ class GetRoleIdentityCollection extends \Datenkraft\Backbone\Client\AccessManage
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('filter[identityId]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[identityId]'));
         $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('paginationMode', array('string'));
         $optionsResolver->addAllowedTypes('filter[identityId]', array('string'));
         return $optionsResolver;
     }
@@ -50,14 +58,14 @@ class GetRoleIdentityCollection extends \Datenkraft\Backbone\Client\AccessManage
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetRoleIdentityCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\RoleIdentityResource[]|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse
+     * @return \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\RoleIdentityCollection|\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\RoleIdentityResource[]', 'json');
+            return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\RoleIdentityCollection', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetRoleIdentityCollectionBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'), $response);
