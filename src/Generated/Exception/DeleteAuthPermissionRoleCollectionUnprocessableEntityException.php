@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception;
 
-class DeleteAuthRoleBadRequestException extends BadRequestException
+class DeleteAuthPermissionRoleCollectionUnprocessableEntityException extends UnprocessableEntityException
 {
     /**
      * @var \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse
@@ -10,7 +10,7 @@ class DeleteAuthRoleBadRequestException extends BadRequestException
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Bad Request');
+        parent::__construct('Unprocessable Entity');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse
