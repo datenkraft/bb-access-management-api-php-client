@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception;
 
-class DeleteAuthRoleIdentityCollectionNotFoundException extends NotFoundException
+class GetOpenApiInFormatBadRequestException extends BadRequestException
 {
     /**
      * @var \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse
@@ -10,7 +10,7 @@ class DeleteAuthRoleIdentityCollectionNotFoundException extends NotFoundExceptio
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Not Found');
+        parent::__construct('Invalid format');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse

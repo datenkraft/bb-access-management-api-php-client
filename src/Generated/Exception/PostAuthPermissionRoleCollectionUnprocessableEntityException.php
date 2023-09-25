@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception;
 
-class DeleteAuthPermissionRoleCollectionNotFoundException extends NotFoundException
+class PostAuthPermissionRoleCollectionUnprocessableEntityException extends UnprocessableEntityException
 {
     /**
      * @var \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse
@@ -10,7 +10,7 @@ class DeleteAuthPermissionRoleCollectionNotFoundException extends NotFoundExcept
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Not Found');
+        parent::__construct('Unprocessable Entity');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse

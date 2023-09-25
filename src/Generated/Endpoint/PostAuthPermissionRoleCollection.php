@@ -40,6 +40,7 @@ class PostAuthPermissionRoleCollection extends \Datenkraft\Backbone\Client\Acces
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthPermissionRoleCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthPermissionRoleCollectionForbiddenException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthPermissionRoleCollectionConflictException
+     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthPermissionRoleCollectionUnprocessableEntityException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthPermissionRoleCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException
      *
@@ -61,6 +62,9 @@ class PostAuthPermissionRoleCollection extends \Datenkraft\Backbone\Client\Acces
         }
         if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthPermissionRoleCollectionConflictException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'));
+        }
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthPermissionRoleCollectionUnprocessableEntityException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\PostAuthPermissionRoleCollectionInternalServerErrorException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'));

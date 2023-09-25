@@ -27,6 +27,10 @@ class GetChangelogInFormat extends \Datenkraft\Backbone\Client\AccessManagementA
     {
         return array(array(), null);
     }
+    public function getExtraHeaders() : array
+    {
+        return array('Accept' => array('application/json'));
+    }
     /**
      * {@inheritdoc}
      *
@@ -41,11 +45,11 @@ class GetChangelogInFormat extends \Datenkraft\Backbone\Client\AccessManagementA
         if (200 === $status) {
             return null;
         }
-        if (404 === $status) {
-            throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetChangelogInFormatNotFoundException();
+        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetChangelogInFormatNotFoundException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
-        if (400 === $status) {
-            throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetChangelogInFormatBadRequestException();
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\GetChangelogInFormatBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\UnexpectedStatusCodeException($status, $body);
     }
