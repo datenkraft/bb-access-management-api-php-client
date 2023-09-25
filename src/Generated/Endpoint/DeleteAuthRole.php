@@ -34,7 +34,6 @@ class DeleteAuthRole extends \Datenkraft\Backbone\Client\AccessManagementApi\Gen
     /**
      * {@inheritdoc}
      *
-     * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\DeleteAuthRoleBadRequestException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\DeleteAuthRoleUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\DeleteAuthRoleForbiddenException
      * @throws \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\DeleteAuthRoleNotFoundException
@@ -49,9 +48,6 @@ class DeleteAuthRole extends \Datenkraft\Backbone\Client\AccessManagementApi\Gen
         $body = (string) $response->getBody();
         if (204 === $status) {
             return null;
-        }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\DeleteAuthRoleBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Exception\DeleteAuthRoleUnauthorizedException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\AccessManagementApi\\Generated\\Model\\ErrorResponse', 'json'), $response);
