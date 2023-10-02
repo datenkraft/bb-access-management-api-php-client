@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint;
 class PostRoleIdentity extends \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Create one or more role to identity assignments in this resource server
+     * Create a role to identity assignments in the target resource server
      *
      * @param \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\RoleIdentityResource $requestBody 
      */

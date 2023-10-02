@@ -346,7 +346,7 @@ class Client extends \Datenkraft\Backbone\Client\AccessManagementApi\Generated\R
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Endpoint\GetRoleIdentityCollection($queryParameters), $fetch);
     }
     /**
-     * Create one or more role to identity assignments in this resource server
+     * Create a role to identity assignments in the target resource server
      *
      * @param \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\RoleIdentityResource $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
