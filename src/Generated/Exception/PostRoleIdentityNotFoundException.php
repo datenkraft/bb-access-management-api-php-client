@@ -14,7 +14,10 @@ class PostRoleIdentityNotFoundException extends NotFoundException
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Not Found');
+        parent::__construct('Not Found
+
+Error codes:
+- PERMISSIONS_MISSING: No authorization for the called action was found.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

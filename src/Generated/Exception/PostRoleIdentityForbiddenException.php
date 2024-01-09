@@ -14,7 +14,10 @@ class PostRoleIdentityForbiddenException extends ForbiddenException
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Forbidden');
+        parent::__construct('Forbidden
+
+Error codes:
+- DATA_NOT_FOUND: The requested data could not be found.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
