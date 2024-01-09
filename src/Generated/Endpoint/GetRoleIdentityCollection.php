@@ -12,7 +12,8 @@ class GetRoleIdentityCollection extends \Datenkraft\Backbone\Client\AccessManage
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
     *     @var string $filter[identityId] Filter the response for an identityId (uuid).
     * }
     */
