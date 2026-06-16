@@ -2244,7 +2244,6 @@
                     {
                         "properties": {
                             "data": {
-                                "description": "Class RoleResourceCollection",
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/roleResource"
@@ -2303,7 +2302,6 @@
                     {
                         "properties": {
                             "data": {
-                                "description": "Class RoleIdentityResourceCollection",
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/roleIdentityResource"

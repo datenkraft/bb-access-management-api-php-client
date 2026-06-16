@@ -17,8 +17,6 @@ class RoleIdentityCollection extends \ArrayObject
      */
     protected $pagination;
     /**
-     * Class RoleIdentityResourceCollection
-     *
      * @var list<RoleIdentityResource>
      */
     protected $data;
@@ -41,8 +39,6 @@ class RoleIdentityCollection extends \ArrayObject
         return $this;
     }
     /**
-     * Class RoleIdentityResourceCollection
-     *
      * @return list<RoleIdentityResource>
      */
     public function getData(): array
@@ -50,8 +46,6 @@ class RoleIdentityCollection extends \ArrayObject
         return $this->data;
     }
     /**
-     * Class RoleIdentityResourceCollection
-     *
      * @param list<RoleIdentityResource> $data
      *
      * @return self
