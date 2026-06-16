@@ -19,7 +19,7 @@ class GetRoleCollectionResponse extends \ArrayObject
      */
     protected $pagination;
     /**
-     * Class RoleResourceCollection
+     * 
      *
      * @var list<RoleResource>
      */
@@ -47,7 +47,7 @@ class GetRoleCollectionResponse extends \ArrayObject
         return $this;
     }
     /**
-     * Class RoleResourceCollection
+     * 
      *
      * @return list<RoleResource>
      */
@@ -56,7 +56,7 @@ class GetRoleCollectionResponse extends \ArrayObject
         return $this->data;
     }
     /**
-     * Class RoleResourceCollection
+     * 
      *
      * @param list<RoleResource> $data
      *
