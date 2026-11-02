@@ -38,11 +38,11 @@ class RoleIdentityResourceNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('roleCode', $data)) {
-            $object->setRoleCode($data['roleCode']);
+            $object->roleCode = $data['roleCode'];
             unset($data['roleCode']);
         }
         if (\array_key_exists('identityId', $data)) {
-            $object->setIdentityId($data['identityId']);
+            $object->identityId = $data['identityId'];
             unset($data['identityId']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class RoleIdentityResourceNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['roleCode'] = $data->getRoleCode();
-        $dataArray['identityId'] = $data->getIdentityId();
-        foreach ($data as $key => $value) {
+        $dataArray['roleCode'] = $data->roleCode;
+        $dataArray['identityId'] = $data->identityId;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }
