@@ -90,39 +90,43 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     private function initNormalizer(string $normalizerClass)
     {
-        $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this->normalizer);
-        $normalizer->setDenormalizer($this->denormalizer);
+        $normalizer = match ($normalizerClass) {
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuditLogNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuditLogNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuditLogCollectionNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuditLogCollectionNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthPermissionResourceNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthPermissionResourceNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthPermissionRolePaginatedCollectionNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthPermissionRolePaginatedCollectionNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthPermissionRoleResourceNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthPermissionRoleResourceNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthRoleCollectionNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthRoleCollectionNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthRoleIdentityPaginatedCollectionNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthRoleIdentityPaginatedCollectionNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthRoleIdentityResourceNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthRoleIdentityResourceNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthRoleResourceNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\AuthRoleResourceNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\CollectionNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\CollectionNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\CollectionPaginationNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\CollectionPaginationNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\ErrorNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\ErrorNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\ErrorReferencesItemNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\ErrorReferencesItemNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\ErrorResponseNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\ErrorResponseNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\GetAuthPermissionCollectionResponseNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\GetAuthPermissionCollectionResponseNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\GetRoleCollectionResponseNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\GetRoleCollectionResponseNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\InformationNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\InformationNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\InformationResponseNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\InformationResponseNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\NewAuthRoleResourceNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\NewAuthRoleResourceNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\RoleIdentityCollectionNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\RoleIdentityCollectionNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\RoleIdentityResourceNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\RoleIdentityResourceNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\RoleResourceNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Normalizer\RoleResourceNormalizer(),
+            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Normalizer\ReferenceNormalizer::class => new \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Runtime\Normalizer\ReferenceNormalizer(),
+            default => throw new \InvalidArgumentException('Unknown normalizer class: ' . $normalizerClass),
+        };
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface) {
+            $normalizer->setNormalizer($this->normalizer);
+        }
+        if ($normalizer instanceof \Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface) {
+            $normalizer->setDenormalizer($this->denormalizer);
+        }
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [
-            
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuditLog::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuditLogCollection::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthPermissionResource::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthPermissionRolePaginatedCollection::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthPermissionRoleResource::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthRoleCollection::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthRoleIdentityPaginatedCollection::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthRoleIdentityResource::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\AuthRoleResource::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\Collection::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\CollectionPagination::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\Error::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorReferencesItem::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\ErrorResponse::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\GetAuthPermissionCollectionResponse::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\GetRoleCollectionResponse::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\Information::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\InformationResponse::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\NewAuthRoleResource::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\RoleIdentityCollection::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\RoleIdentityResource::class => false,
-            \Datenkraft\Backbone\Client\AccessManagementApi\Generated\Model\RoleResource::class => false,
-            \Jane\Component\JsonSchemaRuntime\Reference::class => false,
-        ];
+        return array_combine(array_keys($this->normalizers), array_fill(0, count($this->normalizers), false));
     }
 }
